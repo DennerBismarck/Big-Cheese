@@ -16,7 +16,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from API import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
+#URL da página inicial
+    path('', views.index, name="index"),
+    path('Produtos/', views.TabelaProdutos, name="tabelaProdutos"),
+    path('editarProduto/<int:id>', views.editarProduto, name="editarproduto"),
+    path('deletarProduto/<int:id>', views.deletarProduto,name="deletarproduto"),
+    path('Vendas/', views.cadastrarVenda, name="tabelaVendas")
 ]
