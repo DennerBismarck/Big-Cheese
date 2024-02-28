@@ -17,10 +17,16 @@ class Produto(models.Model):
         super(Produto, self).save(*args, **kwargs)
 
 class Venda(models.Model):
+
+    COMPRA_CHOICES = [
+        ('Pagou', 'Pagou'),
+        ('Não pagou', 'Não Pagou'),
+    ]
     ven_pro = models.ManyToManyField(Produto, through='Produtos_Das_Vendas', verbose_name="Produtos da venda")
     ven_precoTotal = models.FloatField(verbose_name="Preço total")
     ven_DataHora = models.DateTimeField(auto_now_add=True, verbose_name = "Data e hora da compra")
     ven_desc = models.CharField(max_length = 1000, verbose_name = "Descrição da venda")
+    ven_pago = models.CharField(choices = COMPRA_CHOICES, verbose_name = "Cliente pagou?", max_length = 10, default = 'Não pagou')
 
     def __str__(self):
         return self.ven_precoTotal

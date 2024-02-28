@@ -50,43 +50,19 @@
             </li>
 
             <!-- Divider -->
-           
 
-            <!-- Heading -->
-            
-
-            <!-- Nav Item - Pages Collapse Menu -->
-            
-
-            <!-- Nav Item - Utilities Collapse Menu -->
-            
-
-            <!-- Divider -->
-            
-
-            <!-- Heading -->
-           
-
-            <!-- Nav Item - Pages Collapse Menu -->
-
-            <!-- Nav Item - Charts -->
-            
+            <!-- Nav Item - Produtos -->
             <li class="nav-item">
-                
-                    <a class="nav-link" href="{% url 'tabelaProdutos' %}">
-                        <i class="fas fa-fw fa-table"></i>
-                        <span>Produtos</span></a>
-            
-                  
-            </li> 
+                <a class="nav-link" href="{% url 'tabelaProdutos' %}">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Produtos</span></a>
+            </li>
 
+            <!-- Nav Item - Compras -->
             <li class="nav-item">
-                
-                    <a class="nav-link" href="{% url 'tabelaVendas' %}">
-                        <i class="fas fa-fw fa-table"></i>
-                        <span>Compras</span></a>
-                
-                  
+                <a class="nav-link" href="{% url 'tabelaVendas' %}">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Compras</span></a>
             </li>
 
             <!-- Divider -->
@@ -96,9 +72,6 @@
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
             </div>
-
-            <!-- Sidebar Message -->
-            
 
         </ul>
         <!-- End of Sidebar -->
@@ -118,28 +91,24 @@
                     </button>
 
                     <!-- Topbar Search -->
-                    
+                    <!-- Adicione aqui se necessário -->
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
 
                         <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-                        
+                        <!-- Adicione aqui se necessário -->
 
                         <!-- Nav Item - Alerts -->
-                       
-                            <!-- Dropdown - Alerts -->
-                           
+                        <!-- Adicione aqui se necessário -->
 
                         <!-- Nav Item - Messages -->
-                       
-                            <!-- Dropdown - Messages -->
-                           
-                              
+                        <!-- Adicione aqui se necessário -->
 
                         <div class="topbar-divider d-none d-sm-block"></div>
 
                         <!-- Nav Item - User Information -->
+                        <!-- Adicione aqui se necessário -->
 
                     </ul>
 
@@ -150,47 +119,63 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-
+                    <h1 class="h3 mb-4 text-gray-800">Bem-vindo à Big Cheese 3000</h1>
 
                     <!-- Content Row -->
-                    <div class="text-center">
+                    <div class="row">
+
                         <!-- Earnings (Monthly) Card Example -->
-                        <div class="text-center">
-                            OLÁ
+                        <div class="col-md-4 mb-4">
+                            <div class="card shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="text-center">
+                                        <h6 class="m-0 font-weight-bold text-primary">Quantidade de Ganho Total</h6>
+                                        <h2 class="text-gray-800">R$ {{ qtd_ganho_total }}</h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Espaço para Tabela de Compras Não Pagas -->
+                        <div class="col-md-8 mb-4">
+                            <div class="card shadow h-100 py-2">
+                                <div class="card-body">
+                                    <h6 class="m-0 font-weight-bold text-primary">Compras Não Pagas</h6>
+                                    <ul>
+                                        {% for venda in vendas_nao_pagas %}
+                                            <li>{{ venda.ven_desc }} - Preço Total: R$ {{ venda.ven_precoTotal }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
 
                     </div>
 
-                    <!-- Content Row -->
-
+                    <!-- Espaço para Tabela de Produtos Mais Vendidos -->
                     <div class="row">
-
-                        <!-- Area Chart -->
-                        
-
-                        <!-- Pie Chart -->
-                    </div>
-
-                    <!-- Content Row -->
-                    <div class="row">
-
-                        <!-- Content Column -->
-                        <div class="col-lg-6 mb-4">
-
-                            <!-- Project Card Example -->
-                            
-
-                            <!-- Color System -->
-
-                        </div>
-
-                        <div class="col-lg-6 mb-4">
-
-                            <!-- Illustrations -->
-                            
-
-                            <!-- Approach -->
-
+                        <div class="col-md-12 mb-4">
+                            <div class="card shadow h-100 py-2">
+                                <div class="card-body">
+                                    <h6 class="m-0 font-weight-bold text-primary">Produtos Mais Vendidos</h6>
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Produto</th>
+                                                <th>Quantidade Vendida</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for produto in produtos_mais_vendidos %}
+                                                <tr>
+                                                    <td>{{ produto.pro_desc }}</td>
+                                                    <td>{{ produto.total_vendido }}</td>
+                                                </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -220,9 +205,6 @@
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
-
-    <!-- Logout Modal-->
-
 
     <!-- Bootstrap core JavaScript-->
     <script src="{% static "vendor/jquery/jquery.min.js" %}"></script>

@@ -23,8 +23,12 @@ urlpatterns = [
 
 #URL da página inicial
     path('', views.index, name="index"),
+
     path('Produtos/', views.TabelaProdutos, name="tabelaProdutos"),
     path('editarProduto/<int:id>', views.editarProduto, name="editarproduto"),
     path('deletarProduto/<int:id>', views.deletarProduto,name="deletarproduto"),
-    path('Vendas/', views.cadastrarVenda, name="tabelaVendas")
+
+    path('Vendas/', views.cadastrarVenda, name="tabelaVendas"),
+    path('editarVenda/<int:id>',views.editarvenda, name="editarvenda"),
+    path('deletarVenda/<int:id>', views.deletarvenda, name="deletarvenda")
 ]

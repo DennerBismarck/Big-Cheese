@@ -180,6 +180,7 @@
                                                 <th>Valor total</th>
                                                 <th>Data e hora</th>
                                                 <th>Descrição</th>
+                                                <th>Estado de pagamento</th>
                                                 <th>Ações</th>                                            
                                             </tr>
                                         </thead>
@@ -189,6 +190,7 @@
                                                 <th>Valor total</th>
                                                 <th>Data e hora</th>
                                                 <th>Descrição</th>
+                                                <th>Estado de pagamento</th>
                                                 <th>Ações</th>   
                                             </tr>
                                         </tfoot>
@@ -203,9 +205,10 @@
                                                 <td>R${{ venda.ven_precoTotal }}</td>
                                                 <td>{{ venda.ven_DataHora }}</td>
                                                 <td>{{ venda.ven_desc }}</td>
+                                                <td>{{ venda.ven_pago }}
                                                 <td>
-                                                    <a href="{% url 'index' %}"><i class="fas fa-edit"></i></a> 
-                                                    <a href="{% url 'index' %}"><i class="fas fa-trash"></i></a>
+                                                    <a href="{% url 'editarvenda' venda.id %}"><i class="fas fa-edit"></i></a> 
+                                                    <a href="{% url 'deletarvenda' venda.id %}"><i class="fas fa-trash"></i></a>
                                                 </td>
                                             </tr>
                                         {% endfor %}                                     
